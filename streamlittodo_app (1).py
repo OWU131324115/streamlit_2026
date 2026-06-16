@@ -246,15 +246,15 @@ if st.session_state.todo_list:
             f"{status} **{item['date'].strftime('%m/%d')}**: {item['task']}"
         )
 else:
-    st.sidebar.info(":violet[タスクがありません。]")
+    st.sidebar.info("タスクがありません。")
 
 st.sidebar.markdown("---")
 st.sidebar.header("このアプリについて")
-st.sidebar.markdown(
-    """:violet[
+st.sidebar.success(
+    """
     このアプリではTodoリスト作成と収支管理ができます
     - 日付を選択してタスクを登録できます
     - サイドバーには、すべてのタスクが日付順に一覧表示されます
     - 収支管理では収入と支出を管理できます
-    ]"""
+    """
 )
