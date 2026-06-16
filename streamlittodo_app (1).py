@@ -207,7 +207,7 @@ with tab2:
                 if st.button("🗑️ 削除", key=f"del_b_{b['i']}"):
                     st.session_state.balance_list = [item for item in st.session_state.balance_list if item["i"] != b["i"]]
                     st.rerun()
-
+                    
 # 一括操作（選択された日付のタスクのみに適用）
 if filtered_tasks:
     st.markdown("---")
