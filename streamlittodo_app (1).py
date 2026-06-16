@@ -251,10 +251,10 @@ else:
 st.sidebar.markdown("---")
 st.sidebar.header("このアプリについて")
 st.sidebar.markdown(
-    ":violet[
+    """:violet[
     このアプリではTodoリスト作成と収支管理ができます
     - 日付を選択してタスクを登録できます
     - サイドバーには、すべてのタスクが日付順に一覧表示されます
     - 収支管理では収入と支出を管理できます
-    ]"
+    ]"""
 )
