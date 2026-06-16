@@ -248,7 +248,7 @@ else:
     st.sidebar.info("タスクがありません。")
 
 st.sidebar.markdown("---")
-st.sidebar.header("☆｀.このアプリについて.´☆")
+st.sidebar.header("☆.このアプリについて.☆")
 st.sidebar.markdown(
     """
     Todoリスト作成と収支管理ができる！
