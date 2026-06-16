@@ -110,9 +110,9 @@ filtered_tasks = [
 
 # 3. ToDoリスト表示（選択された日付のみ）
 
-    st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
+st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
 
-    if not filtered_tasks:
+if not filtered_tasks:
         st.info("この日のタスクはありません")
 else:
     # 完了・未完了
