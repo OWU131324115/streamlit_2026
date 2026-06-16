@@ -103,17 +103,17 @@ with tab1:
             st.error("タスクを入力してください")
 
 # 選択された日付のタスクだけをピックアップ
-filtered_tasks = [
-    item for item in st.session_state.todo_list if item["date"] == selected_date
-]
+    filtered_tasks = [
+        item for item in st.session_state.todo_list if item["date"] == selected_date
+    ]
 
 
 # 3. ToDoリスト表示（選択された日付のみ）
 
-st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
+    st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
 
-if not filtered_tasks:
-        st.info("この日のタスクはありません")
+    if not filtered_tasks:
+            st.info("この日のタスクはありません")
 else:
     # 完了・未完了
     total_tasks = len(filtered_tasks)
