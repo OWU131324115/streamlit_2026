@@ -35,7 +35,6 @@ def _normalize_tasks() -> None:
 
 
 def _move_task(task_i: int, direction: int) -> None:
-    """同じ日付のタスク群の中で、指定されたタスクの順序を入れ替えます。"""
     tasks = st.session_state.todo_list
     index = next((i for i, item in enumerate(tasks) if item["i"] == task_i), None)
     if index is None:
@@ -249,12 +248,12 @@ else:
     st.sidebar.info("タスクがありません。")
 
 st.sidebar.markdown("---")
-st.sidebar.header("このアプリについて")
+st.sidebar.header("☆・.このアプリについて☆.・")
 st.sidebar.markdown(
     """
-    このアプリではTodoリスト作成と収支管理ができます
-    - 日付を選択してタスクを登録できます
-    - サイドバーには、すべてのタスクが日付順に一覧表示されます
-    - 収支管理では収入と支出を管理できます
+    Todoリスト作成と収支管理ができる！
+    - 日付を選択してタスクを登録しよう！
+    - ここにタスクが日付順に一覧表示されるよ！
+    - 収支管理で収入と支出を管理しよう！
     """
 )
