@@ -246,11 +246,11 @@ if st.session_state.todo_list:
             f"{status} **{item['date'].strftime('%m/%d')}**: {item['task']}"
         )
 else:
-    st.sidebar.info("タスクがありません。")
+    st.sidebar.info(":violet[タスクがありません。]")
 
 st.sidebar.markdown("---")
 st.sidebar.header("このアプリについて")
-st.sidebar.success(
+st.sidebar..markdown(
     """
     このアプリではTodoリスト作成と収支管理ができます
     - 日付を選択してタスクを登録できます
