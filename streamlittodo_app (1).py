@@ -81,22 +81,25 @@ tab1, tab2 = st.tabs(["📝 Todoリスト", "💴 収支管理"])
 
 
 # 2. タスク追加機能
-if st.button("タスクを追加"):
-        if new_task:
-            st.session_state.todo_list.append(
-                {
-                    "i": st.session_state.next_task_i,
-                    "task": new_task,
-                    "done": False,
-                    "date": selected_date,  # 選択した日付をデータに含める
-                }
-            )
-            st.session_state.next_task_i += 1
-            st.success(f"「{new_task}」を追加しました！")
-            st.rerun()
-        else:
-            st.error("タスクを入力してください")
+with tab1:
+    st.subheader(f"▼ add a task")
+new_task = st.text_input("タスクを入力してください", placeholder="例 : 30分ランニングする🏃")
 
+if st.button("タスクを追加"):
+    if new_task:
+        st.session_state.todo_list.append(
+            {
+                "i": st.session_state.next_task_i,
+                "task": new_task,
+                "done": False,
+                "date": selected_date,  # 選択した日付をデータに含める
+            }
+        )
+    st.session_state.next_task_i += 1
+    st.success(f"「{new_task}」を追加しました！")
+    st.rerun()
+    else:
+        st.error("タスクを入力してください")
 # 選択された日付のタスクだけをピックアップ
 filtered_tasks = [
     item for item in st.session_state.todo_list if item["date"] == selected_date
