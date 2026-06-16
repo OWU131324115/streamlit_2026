@@ -84,23 +84,23 @@ tab1, tab2 = st.tabs(["📝 Todoリスト", "💴 収支管理"])
 # 2. タスク追加機能
 with tab1:
     st.subheader(f"▼ add a task")
-new_task = st.text_input("タスクを入力してください", placeholder="例 : 30分ランニングする🏃")
+    new_task = st.text_input("タスクを入力してください", placeholder="例 : 30分ランニングする🏃")
 
-if st.button("タスクを追加"):
-    if new_task:
-        st.session_state.todo_list.append(
-            {
-                "i": st.session_state.next_task_i,
-                "task": new_task,
-                "done": False,
-                "date": selected_date,  # 選択した日付をデータに含める
-            }
-        )
-        st.session_state.next_task_i += 1
-        st.success(f"「{new_task}」を追加しました！")
-        st.rerun()
-    else:
-        st.error("タスクを入力してください")
+    if st.button("タスクを追加"):
+        if new_task:
+            st.session_state.todo_list.append(
+                {
+                    "i": st.session_state.next_task_i,
+                    "task": new_task,
+                    "done": False,
+                    "date": selected_date,  # 選択した日付をデータに含める
+                }
+            )
+            st.session_state.next_task_i += 1
+            st.success(f"「{new_task}」を追加しました！")
+            st.rerun()
+        else:
+            st.error("タスクを入力してください")
 
 # 選択された日付のタスクだけをピックアップ
 filtered_tasks = [
@@ -253,9 +253,9 @@ st.sidebar.markdown("---")
 st.sidebar.header("このアプリについて")
 st.sidebar.success(
     """
-    このアプリではTodoリスト作成と収支管理ができます。
-    - 日付を選択してタスクを登録
+    このアプリではTodoリスト作成と収支管理ができます
+    - 日付を選択してタスクを登録できます
     - サイドバーには、すべてのタスクが日付順に一覧表示されます
-    - 収支管理では
+    - 収支管理では収入と支出を管理できます
     """
 )
