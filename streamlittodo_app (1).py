@@ -35,7 +35,6 @@ def _normalize_tasks() -> None:
 
 
 def _move_task(task_i: int, direction: int) -> None:
-    """同じ日付のタスク群の中で、指定されたタスクの順序を入れ替えます。"""
     tasks = st.session_state.todo_list
     index = next((i for i, item in enumerate(tasks) if item["i"] == task_i), None)
     if index is None:
@@ -84,7 +83,7 @@ tab1, tab2 = st.tabs(["📝 Todoリスト", "💴 収支管理"])
 # 2. タスク追加機能
 with tab1:
     st.subheader(f"▼ add a task")
-new_task = st.text_input("タスクを入力してください", placeholder="例 : 30分ランニングする🏃")
+    new_task = st.text_input("タスクを入力してください", placeholder="例 : 30分ランニングする🏃")
 
 if st.button("タスクを追加"):
     if new_task:
@@ -94,7 +93,7 @@ if st.button("タスクを追加"):
                 "task": new_task,
                 "done": False,
                 "date": selected_date,  # 選択した日付をデータに含める
-            }
+        }
         )
         st.session_state.next_task_i += 1
         st.success(f"「{new_task}」を追加しました！")
