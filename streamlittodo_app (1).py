@@ -103,61 +103,60 @@ with tab1:
             st.error("タスクを入力してください")
 
 # 選択された日付のタスクだけをピックアップ
-filtered_tasks = [
-    item for item in st.session_state.todo_list if item["date"] == selected_date
-]
+# 選択された日付のタスクだけをピックアップ
+    filtered_tasks = [
+        item for item in st.session_state.todo_list if item["date"] == selected_date
+    ]
 
+    # 3. ToDoリスト表示（選択された日付のみ）
+    st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
 
-# 3. ToDoリスト表示（選択された日付のみ）
-
-st.subheader(f"📝 To Do List 【{selected_date.strftime('%Y.%m.%d')}】")
-
-if not filtered_tasks:
+    if not filtered_tasks:
         st.info("この日のタスクはありません")
-else:
-    # 完了・未完了
-    total_tasks = len(filtered_tasks)
-    completed_tasks = sum(1 for item in filtered_tasks if item["done"])
+    else:
+        # 完了・未完了
+        total_tasks = len(filtered_tasks)
+        completed_tasks = sum(1 for item in filtered_tasks if item["done"])
 
-    st.write(
-        f"**タスク数**: {total_tasks} 件 | **完了**: {completed_tasks} 件 | **残り**: {total_tasks - completed_tasks} 件"
-    )
+        st.write(
+            f"**タスク数**: {total_tasks} 件 | **完了**: {completed_tasks} 件 | **残り**: {total_tasks - completed_tasks} 件"
+        )
 
-    # 各タスクの表示
-    for i, item in enumerate(filtered_tasks):
-        col1, col2, col3, col4 = st.columns([4, 1, 1, 1])
+        # 各タスクの表示
+        for i, item in enumerate(filtered_tasks):
+            col1, col2, col3, col4 = st.columns([4, 1, 1, 1])
 
-        with col1:
-            # 完了状態の管理
-            is_done = st.checkbox(
-                item["task"], value=item["done"], key=f"checkbox_{item['i']}"
-            )
+            with col1:
+                # 完了状態の管理
+                is_done = st.checkbox(
+                    item["task"], value=item["done"], key=f"checkbox_{item['i']}"
+                )
 
-            if is_done != item["done"]:
-                item["done"] = is_done
-                st.rerun()
+                if is_done != item["done"]:
+                    item["done"] = is_done
+                    st.rerun()
 
-        with col2:
-            if st.button("↑", key=f"move_up_{item['i']}", disabled=i == 0):
-                _move_task(item["i"], -1)
-                st.rerun()
+            with col2:
+                if st.button("↑", key=f"move_up_{item['i']}", disabled=i == 0):
+                    _move_task(item["i"], -1)
+                    st.rerun()
 
-        with col3:
-            if st.button(
-                "↓",
-                key=f"move_down_{item['i']}",
-                disabled=i == len(filtered_tasks) - 1,
-            ):
-                _move_task(item["i"], 1)
-                st.rerun()
+            with col3:
+                if st.button(
+                    "↓",
+                    key=f"move_down_{item['i']}",
+                    disabled=i == len(filtered_tasks) - 1,
+                ):
+                    _move_task(item["i"], 1)
+                    st.rerun()
 
-        with col4:
-            if st.button("🗑️ 削除", key=f"delete_{item['i']}"):
-                st.session_state.todo_list = [
-                    t for t in st.session_state.todo_list if t["i"] != item["i"]
-                ]
-                st.success("タスクを削除しました")
-                st.rerun()
+            with col4:
+                if st.button("🗑️ 削除", key=f"delete_{item['i']}"):
+                    st.session_state.todo_list = [
+                        t for t in st.session_state.todo_list if t["i"] != item["i"]
+                    ]
+                    st.success("タスクを削除しました")
+                    st.rerun()
 
 
 with tab2:
