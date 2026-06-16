@@ -35,6 +35,7 @@ def _normalize_tasks() -> None:
 
 
 def _move_task(task_i: int, direction: int) -> None:
+    """同じ日付のタスク群の中で、指定されたタスクの順序を入れ替えます。"""
     tasks = st.session_state.todo_list
     index = next((i for i, item in enumerate(tasks) if item["i"] == task_i), None)
     if index is None:
@@ -95,11 +96,12 @@ if st.button("タスクを追加"):
                 "date": selected_date,  # 選択した日付をデータに含める
             }
         )
-    st.session_state.next_task_i += 1
-    st.success(f"「{new_task}」を追加しました！")
-    st.rerun()
+        st.session_state.next_task_i += 1
+        st.success(f"「{new_task}」を追加しました！")
+        st.rerun()
     else:
         st.error("タスクを入力してください")
+
 # 選択された日付のタスクだけをピックアップ
 filtered_tasks = [
     item for item in st.session_state.todo_list if item["date"] == selected_date
@@ -254,6 +256,6 @@ st.sidebar.success(
     このアプリではTodoリスト作成と収支管理ができます。
     - 日付を選択してタスクを登録
     - サイドバーには、すべてのタスクが日付順に一覧表示されます
-    - 収支管理では収入と支出を管理することが出来ます。
+    - 収支管理では
     """
 )
