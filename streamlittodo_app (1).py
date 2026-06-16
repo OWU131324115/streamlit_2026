@@ -93,7 +93,7 @@ if st.button("タスクを追加"):
                 "task": new_task,
                 "done": False,
                 "date": selected_date,  # 選択した日付をデータに含める
-        }
+            }
         )
         st.session_state.next_task_i += 1
         st.success(f"「{new_task}」を追加しました！")
